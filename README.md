@@ -4,7 +4,7 @@ This project presents a simple API for using R plotting system and [plotly.js](h
 ## Usage
 Downloading `plotly-latest.js` library in the corresponding library:
 ```bash
-$PACKAGE_ROOT=/pyvenv/lib/python3.6/site-packages # directory where notebook package is installed
+$PACKAGE_ROOT=~/pyvenv/lib/python3.6/site-packages # directory where notebook package is installed
 cd $PACKAGE_ROOT/notebook/static/components/
 mkdir plotly && cd plotly
 wget https://cdn.plot.ly/plotly-latest.js
