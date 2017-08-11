@@ -152,4 +152,8 @@ package object plotly {
       </script>
     """.format(id, id, data, title)
   }
+
+  def mkPoints(xs: Seq[Double], ys: Seq[Double]): Seq[Point] = xs.zip(ys).map { case (x, y) => Point(x, y) }
+
+  def mkLabeledPoints(xs: Seq[String], ys: Seq[Double]): Seq[LabeledPoint] = xs.zip(ys).map { case (x, y) => LabeledPoint(x, y) }
 }
