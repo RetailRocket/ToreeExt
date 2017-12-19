@@ -1,6 +1,6 @@
-import AssemblyKeys._
-
-assemblySettings
+import sbt._
+import Keys._
+import sbtassembly.AssemblyPlugin.autoImport._
 
 name := "ToreeExt"
 
@@ -22,14 +22,13 @@ fork in Test := true
 
 parallelExecution in Test := false
 
-assembleArtifact in packageScala := false
+assembleArtifact in assemblyPackageScala := false
 
 val meta = """META.INF(.)*""".r
 
 val lucene = """META.INF/services/org.apache.lucene.codecs.Cod(.)*""".r
 
-mergeStrategy in assembly <<= (mergeStrategy in assembly) { (old) =>
-  {
+assemblyMergeStrategy in assembly := {
     case PathList("javax", "servlet", xs @ _*) => MergeStrategy.last
     case PathList("javax", "xml", xs @ _*) => MergeStrategy.last
     case PathList("org", "apache", xs @ _*) => MergeStrategy.last
@@ -40,5 +39,4 @@ mergeStrategy in assembly <<= (mergeStrategy in assembly) { (old) =>
     case lucene(_) => MergeStrategy.last
     case meta(_) => MergeStrategy.discard
     case x => MergeStrategy.last
-  }
 }
